@@ -7,6 +7,19 @@ function start () {
   bindEventListeners(document.getElementsByClassName('board')[0].children)
 }
 
+//This function will remove any existing blue,green,invisible classname so that the count will work correctly.
+// From Sherlyc
+function resetClass (evt){
+    if (evt.target.classList.contains('green')) {
+      evt.target.classList.remove('green');
+    } else if (evt.target.classList.contains('blue')){
+      evt.target.classList.remove('blue');
+    } else if (evt.target.classList.contains('invisible')){
+      evt.target.classList.remove('invisible');
+    }
+
+}
+
 function bindEventListeners (dots) {
   for (var i = 0; i < dots.length; i++) {
     // BIND YOUR EVENT LISTENERS HERE
@@ -18,20 +31,20 @@ function bindEventListeners (dots) {
 }
 
 function makeGreen (evt) {
-  evt.preventDefault()
+  resetClass (evt);
   evt.target.classList.toggle('green')
   updateCounts()
 }
 
 // CREATE FUNCTION makeBlue HERE
 function makeBlue(evt) {
-  evt.preventDefault();
+  resetClass (evt);
   evt.target.classList.toggle('blue');
   updateCounts();
 }
 // CREATE FUNCTION hide HERE
 function hide(evt) {
-  evt.preventDefault();
+  resetClass (evt);
   evt.target.classList.toggle('invisible');
   updateCounts();
 }
