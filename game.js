@@ -44,6 +44,21 @@ function updateCounts () {
   }
 
   // WRITE CODE HERE TO COUNT BLUE, GREEN, AND INVISIBLE DOTS
+  // One way of doing it. But this also counts the lines
+  // totals.blue = document.getElementsByClassName('blue').length;
+  // totals.green = document.getElementsByClassName('green').length;
+  // totals.invisible = document.getElementsByClassName('invisible').length;
+  dotsChildren = document.getElementsByClassName('board')[0].children;
+  for(i = 0; i < dotsChildren.length; i++) {
+    if(dotsChildren[i].classList.contains('blue')) {
+      totals.blue++;
+    } else if (dotsChildren[i].classList.contains('green')) {
+      totals.green++;
+    } else if (dotsChildren[i].classList.contains('invisible')) {
+      totals.invisible++;
+    }
+  }
+
 
   // Once you've done the counting, this function will update the display
   displayTotals(totals)
